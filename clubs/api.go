@@ -3,7 +3,7 @@ package clubs
 import (
 	"net/http"
 
-	"github.com/peteclark-io/couch-ref/tools/cli/structs"
+	"github.com/peteclark-io/couchref-cli/structs"
 )
 
 type Api interface {

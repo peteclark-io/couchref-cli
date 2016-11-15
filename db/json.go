@@ -3,7 +3,7 @@ package db
 import (
 	"encoding/json"
 
-	"github.com/peteclark-io/couch-ref/tools/cli/structs"
+	"github.com/peteclark-io/couchref-cli/structs"
 )
 
 func AsFixture(data []byte, err error) ([]structs.Fixture, error) {

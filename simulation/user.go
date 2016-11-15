@@ -6,8 +6,8 @@ import (
 	"math/rand"
 	"os"
 
-	"github.com/peteclark-io/couch-ref/tools/cli/db"
-	"github.com/peteclark-io/couch-ref/tools/cli/structs"
+	"github.com/peteclark-io/couchref-cli/db"
+	"github.com/peteclark-io/couchref-cli/structs"
 )
 
 var genders = []string{"Male", "Female"}

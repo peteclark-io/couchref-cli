@@ -6,8 +6,8 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/peteclark-io/couch-ref/tools/cli/clubs"
-	"github.com/peteclark-io/couch-ref/tools/cli/fixtures"
+	"github.com/peteclark-io/couchref-cli/clubs"
+	"github.com/peteclark-io/couchref-cli/fixtures"
 	"github.com/urfave/cli"
 	"gopkg.in/urfave/cli.v1/altsrc"
 )

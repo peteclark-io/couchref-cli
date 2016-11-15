@@ -3,7 +3,7 @@ package fixtures
 import (
 	"encoding/json"
 
-	"github.com/peteclark-io/couch-ref/tools/cli/structs"
+	"github.com/peteclark-io/couchref-cli/structs"
 	uuid "github.com/satori/go.uuid"
 )
 

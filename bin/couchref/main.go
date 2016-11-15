@@ -6,10 +6,10 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/peteclark-io/couch-ref/tools/cli/clubs"
-	"github.com/peteclark-io/couch-ref/tools/cli/db"
-	"github.com/peteclark-io/couch-ref/tools/cli/fixtures"
-	"github.com/peteclark-io/couch-ref/tools/cli/simulation"
+	"github.com/peteclark-io/couchref-cli/clubs"
+	"github.com/peteclark-io/couchref-cli/db"
+	"github.com/peteclark-io/couchref-cli/fixtures"
+	"github.com/peteclark-io/couchref-cli/simulation"
 	"github.com/urfave/cli"
 	"gopkg.in/urfave/cli.v1/altsrc"
 )

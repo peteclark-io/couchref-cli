@@ -3,8 +3,8 @@ package fixtures
 import (
 	"net/http"
 
-	"github.com/peteclark-io/couch-ref/tools/cli/clubs"
-	"github.com/peteclark-io/couch-ref/tools/cli/structs"
+	"github.com/peteclark-io/couchref-cli/clubs"
+	"github.com/peteclark-io/couchref-cli/structs"
 )
 
 type Api interface {
