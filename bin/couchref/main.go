@@ -91,7 +91,7 @@ func main() {
 			Flags:   flags,
 			Before:  altsrc.InitInputSourceWithContext(flags, altsrc.NewYamlSourceFromFlagFunc("config")),
 			Action: func(c *cli.Context) error {
-				sim := simulation.NewSimulation(100, 0.75)
+				sim := simulation.NewSimulation(600, 0.75)
 				firebase := db.NewFirebaseDB(c.String("token"), c.String("project"))
 				err := sim.Simulate(firebase)
 				return err
