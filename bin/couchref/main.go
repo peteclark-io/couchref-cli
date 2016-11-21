@@ -9,6 +9,7 @@ import (
 	"github.com/peteclark-io/couchref-cli/clubs"
 	"github.com/peteclark-io/couchref-cli/db"
 	"github.com/peteclark-io/couchref-cli/fixtures"
+	"github.com/peteclark-io/couchref-cli/referees"
 	"github.com/peteclark-io/couchref-cli/simulation"
 	"github.com/urfave/cli"
 	"gopkg.in/urfave/cli.v1/altsrc"
@@ -77,6 +78,25 @@ func main() {
 				}
 
 				d, _ := json.Marshal(clubs)
+				os.Stdout.Write(d)
+
+				return err
+			},
+		},
+		{
+			Name:    "referees",
+			Aliases: []string{"r"},
+			Usage:   "Download referee data.",
+			Action: func(c *cli.Context) error {
+				client := &http.Client{}
+				api := referees.NewRefereesReader(client)
+
+				refs, err := api.ReadReferees()
+				if err != nil {
+					return err
+				}
+
+				d, _ := json.Marshal(refs)
 				os.Stdout.Write(d)
 
 				return err

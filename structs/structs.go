@@ -1,5 +1,7 @@
 package structs
 
+import "time"
+
 type Fixture struct {
 	Id        string     `json:"id"`
 	Home      string     `json:"home"`
@@ -31,7 +33,7 @@ type Referee struct {
 	Appearances    int               `json:"appearances"`
 	YellowCards    int               `json:"yellowCards"`
 	RedCards       int               `json:"redCards"`
-	Debut          string            `json:"debut"`
+	Debut          time.Time         `json:"debut"`
 	AlternativeIDs map[string]string `json:"alternativeIds"`
 }
 
