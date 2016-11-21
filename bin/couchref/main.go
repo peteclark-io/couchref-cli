@@ -43,12 +43,10 @@ func main() {
 		{
 			Name:    "fixtures",
 			Aliases: []string{"f"},
-			Flags: []cli.Flag{
-				cli.IntFlag{
-					Name:  "m, matchday",
-					Usage: "The matchday to query for.",
-				},
-			},
+			Flags: append(flags, cli.IntFlag{
+				Name:  "m, matchday",
+				Usage: "The matchday to query for.",
+			}),
 			Usage: "Query for fixtures for the provided matchday.",
 			Action: func(c *cli.Context) error {
 				client := &http.Client{}
@@ -88,12 +86,15 @@ func main() {
 			Name:    "simulate",
 			Aliases: []string{"s"},
 			Usage:   "Generate simulated user data.",
-			Flags:   flags,
-			Before:  altsrc.InitInputSourceWithContext(flags, altsrc.NewYamlSourceFromFlagFunc("config")),
+			Flags: append(flags, cli.StringFlag{
+				Name:  "match",
+				Usage: "Match id as a uuid",
+			}),
+			Before: altsrc.InitInputSourceWithContext(flags, altsrc.NewYamlSourceFromFlagFunc("config")),
 			Action: func(c *cli.Context) error {
 				sim := simulation.NewSimulation(600, 0.75)
 				firebase := db.NewFirebaseDB(c.String("token"), c.String("project"))
-				err := sim.Simulate(firebase)
+				err := sim.Simulate(firebase, c.String("match"))
 				return err
 			},
 		},

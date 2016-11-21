@@ -35,7 +35,7 @@ func NewSimulation(total int, percentFans float64) *Simulation {
 	return &Simulation{Total: total, PercentFans: percentFans}
 }
 
-func (s *Simulation) Simulate(firebase db.DB) error {
+func (s *Simulation) Simulate(firebase db.DB, uuid string) error {
 	fixtures, err := db.AsFixture(firebase.Get("/v0/live-matches"))
 	if err != nil {
 		return err
@@ -53,6 +53,10 @@ func (s *Simulation) Simulate(firebase db.DB) error {
 	}
 
 	for _, fixture := range fixtures {
+		if fixture.Id != uuid {
+			continue
+		}
+
 		users, err := s.createUsers(fixture)
 		if err != nil {
 			return err
