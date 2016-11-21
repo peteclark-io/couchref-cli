@@ -14,9 +14,13 @@ func Score(vote bool, result float64, confidence float64) float64 {
 
 	splitScore := confidentScore - 0.500
 
-	finalScore := -10.00 * splitScore
-	if finalScore > 5 {
-		return 5.00
+	bumpedScore := -20.00 * splitScore
+
+	var finalScore float64
+	if bumpedScore > 0 {
+		finalScore = math.Log(bumpedScore) + 2
+	} else {
+		finalScore = bumpedScore
 	}
 
 	return finalScore
