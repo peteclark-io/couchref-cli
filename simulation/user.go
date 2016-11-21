@@ -23,11 +23,12 @@ type Simulation struct {
 }
 
 type userSimulator struct {
-	Fan      bool   `json:"fan"`
-	Sex      string `json:"sex"`
-	Location string `json:"location"`
-	Age      string `json:"age"`
-	Club     string `json:"club"`
+	Fan      bool    `json:"fan"`
+	Sex      string  `json:"sex"`
+	Location string  `json:"location"`
+	Age      string  `json:"age"`
+	Club     string  `json:"club"`
+	Bias     float64 `json:"bias"`
 }
 
 func NewSimulation(total int, percentFans float64) *Simulation {
@@ -83,11 +84,11 @@ func (s *Simulation) createUsers(fixture structs.Fixture) ([]userSimulator, erro
 	}
 
 	for i := 0; i < numFans; i++ {
-		users = append(users, userSimulator{Fan: true, Sex: random(genders), Location: random(countries), Age: random(ageGroups), Club: randomClub(fans).ShortName})
+		users = append(users, userSimulator{Fan: true, Sex: random(genders), Location: random(countries), Age: random(ageGroups), Club: randomClub(fans).ShortName, Bias: randomBias()})
 	}
 
 	for i := 0; i < numNeutrals; i++ {
-		users = append(users, userSimulator{Fan: false, Sex: random(genders), Location: random(countries), Age: random(ageGroups), Club: randomClub(s.clubs).ShortName})
+		users = append(users, userSimulator{Fan: false, Sex: random(genders), Location: random(countries), Age: random(ageGroups), Club: randomClub(s.clubs).ShortName, Bias: randomBias()})
 	}
 
 	return users, nil
@@ -101,6 +102,11 @@ func fanClubs(fixture structs.Fixture, clubs []structs.Club) []structs.Club {
 		}
 	}
 	return fanClubs
+}
+
+func randomBias() float64 {
+	r := rand.New(rand.NewSource(int64(time.Now().Nanosecond())))
+	return r.Float64() / 3.00
 }
 
 func randomClub(from []structs.Club) structs.Club {
