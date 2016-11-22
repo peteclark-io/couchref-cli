@@ -14,11 +14,11 @@ func Score(vote bool, result float64, confidence float64) float64 {
 
 	splitScore := confidentScore - 0.500
 
-	bumpedScore := -20.00 * splitScore
+	bumpedScore := -30.00 * splitScore
 
 	var finalScore float64
 	if bumpedScore > 0 {
-		finalScore = math.Log(bumpedScore) + 2
+		finalScore = math.Log2(bumpedScore + 2)
 	} else {
 		finalScore = bumpedScore
 	}
