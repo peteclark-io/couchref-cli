@@ -10,9 +10,7 @@ func Score(vote bool, result float64, confidence float64) float64 {
 
 	baseScore := math.Abs(userVote - result)
 
-	confidentScore := baseScore * confidence
-
-	splitScore := confidentScore - 0.500
+	splitScore := baseScore - 0.500
 
 	bumpedScore := -30.00 * splitScore
 
@@ -23,5 +21,5 @@ func Score(vote bool, result float64, confidence float64) float64 {
 		finalScore = bumpedScore
 	}
 
-	return finalScore
+	return finalScore * confidence
 }

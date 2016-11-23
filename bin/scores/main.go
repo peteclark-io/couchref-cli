@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"log"
 	"net/url"
 	"os"
 
@@ -32,6 +33,7 @@ func main() {
 	app.Version = version()
 	app.Flags = flags
 	app.Action = func(c *cli.Context) error {
+		log.Println(c.Bool("vote"), c.Float64("result"), c.Float64("confidence"))
 		score := gamification.Score(c.Bool("vote"), c.Float64("result"), c.Float64("confidence"))
 		enc := json.NewEncoder(os.Stdout)
 

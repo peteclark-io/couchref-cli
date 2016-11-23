@@ -42,4 +42,8 @@ func TestScore(t *testing.T) {
 	final = Score(false, 0.5, 1)
 	t.Log(false, 0.5, 1)
 	t.Log(final)
+
+	final = Score(true, 0.49271465926246966, 1)
+	t.Log(true, 0.49271465926246966, 1)
+	t.Log(final)
 }
