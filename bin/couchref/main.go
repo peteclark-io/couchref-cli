@@ -11,7 +11,7 @@ import (
 	"github.com/peteclark-io/couchref-cli/fixtures"
 	"github.com/peteclark-io/couchref-cli/referees"
 	"github.com/peteclark-io/couchref-cli/simulation"
-	"github.com/urfave/cli"
+	cli "gopkg.in/urfave/cli.v1"
 	"gopkg.in/urfave/cli.v1/altsrc"
 )
 

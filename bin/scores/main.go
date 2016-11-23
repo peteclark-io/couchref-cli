@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"github.com/peteclark-io/couchref-cli/gamification"
-	"github.com/urfave/cli"
+	cli "gopkg.in/urfave/cli.v1"
 )
 
 func main() {
