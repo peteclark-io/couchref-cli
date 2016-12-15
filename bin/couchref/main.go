@@ -11,6 +11,7 @@ import (
 	"github.com/peteclark-io/couchref-cli/fixtures"
 	"github.com/peteclark-io/couchref-cli/referees"
 	"github.com/peteclark-io/couchref-cli/simulation"
+	"github.com/peteclark-io/couchref-cli/televised"
 	cli "gopkg.in/urfave/cli.v1"
 	"gopkg.in/urfave/cli.v1/altsrc"
 )
@@ -58,7 +59,13 @@ func main() {
 					return err
 				}
 
-				d, _ := json.Marshal(fixtures.ToMap(*fs))
+				televisedApi := televised.NewTelevisedMatchReader(client)
+				result, err := televisedApi.CheckTelevisedMatches(*fs)
+				if err != nil {
+					return err
+				}
+
+				d, _ := json.Marshal(result)
 				os.Stdout.Write(d)
 
 				return err

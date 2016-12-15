@@ -12,6 +12,7 @@ type Fixture struct {
 	Matchday  int        `json:"-"`
 	Referee   string     `json:"referee"`
 	Questions []Question `json:"questions,omitempty"`
+	Televised bool       `json:"televised"`
 }
 
 type Club struct {
