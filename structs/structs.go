@@ -13,6 +13,7 @@ type Fixture struct {
 	Referee   string     `json:"referee"`
 	Questions []Question `json:"questions,omitempty"`
 	Televised bool       `json:"televised"`
+	Live      bool       `json:"live"`
 }
 
 type Club struct {

@@ -51,5 +51,6 @@ func mapFixture(f fixture) structs.Fixture {
 		Matchday:  f.Matchday,
 		Referee:   "",
 		Televised: false,
+		Live:      false,
 	}
 }
