@@ -1,0 +1,20 @@
+/**
+  Global Branding Variables
+*/
+
+:root {
+  --font-primary:          'Dosis', sans-serif;
+  --font-secondary:        'Work Sans', sans-serif;
+  --font-secondary-bold:   'Montserrat', sans-serif;
+  --font-questions:        'Work Sans', sans-serif;
+
+  --brand-primary:    rgba(55,171,46,1);
+  --brand-secondary:  white;
+  --brand-danger:     #ed5c5c;
+  --brand-tertiary:   #66d3e4;
+
+  --brand-warning:    rgba(254,205,82,1);
+
+  --brand-yes:        #66d3e4;
+  --brand-no:         rgba(60,90,150,1);
+}

@@ -8,7 +8,7 @@ type Fixture struct {
 	HomeScore int        `json:"home_score"`
 	Away      string     `json:"away"`
 	AwayScore int        `json:"away_score"`
-	KickOff   string     `json:"kick_off"`
+	KickOff   time.Time  `json:"kick_off"`
 	Matchday  int        `json:"-"`
 	Referee   string     `json:"referee"`
 	Questions []Question `json:"questions,omitempty"`
@@ -40,13 +40,20 @@ type Referee struct {
 }
 
 type Question struct {
-	ID string `json:"id"`
+	ID            string    `json:"id"`
+	Controversial bool      `json:"controversial"`
+	Asked         time.Time `json:"asked"`
+	Decision      string    `json:"decision"`
+	Description   string    `json:"description"`
+	Match         string    `json:"match"`
+	Question      string    `json:"question"`
+	Time          string    `json:"time"`
 }
 
 type QuestionResults struct {
 	ID        string           `json:"id"`
 	Simple    SimpleStatistics `json:"simple"`
-	Breakdown Breakdown        `json:"breakdown"`
+	Breakdown *Breakdown       `json:"breakdown,omitempty"`
 }
 
 type SimpleStatistics struct {

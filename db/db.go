@@ -1,8 +1,11 @@
 package db
 
 import (
+	"bytes"
 	"encoding/json"
 	"os/exec"
+
+	"github.com/Sirupsen/logrus"
 )
 
 type Firebase struct {
@@ -26,13 +29,27 @@ func (f *Firebase) Write(path string, data interface{}) error {
 	}
 
 	cmd := exec.Command("/usr/local/bin/firebase", "--non-interactive", "--project", f.Project, "--token", f.AuthToken, "database:set", "-y", path)
+
+	var outbuf, errbuf bytes.Buffer
+	cmd.Stdout = &outbuf
+	cmd.Stderr = &errbuf
+
 	pipe, err := cmd.StdinPipe()
 	if err != nil {
 		return err
 	}
 
-	pipe.Write(j)
+	logrus.WithField("path", path).WithField("data", string(j)).Info("Writing to database!")
+
 	cmd.Start()
+
+	pipe.Write(j)
+	pipe.Close()
+
+	cmd.Wait()
+
+	logrus.Info(outbuf.String())
+	logrus.Error(errbuf.String())
 
 	return nil
 }

@@ -1,0 +1,48 @@
+body {
+  margin: 0px;
+}
+
+.brand-header {
+  background-color: rgba(55,171,46,1);
+  padding: 4px;
+  margin-top: 0px;
+  width: 100%;
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.brand-header h1 {
+  color: white;
+  margin: 0px;
+  font-family: 'Dosis', sans-serif;
+}
+
+.brand-header a:hover, a:active {
+  text-decoration: none;
+}
+
+.brand-header h3 {
+  color: white;
+  font-family: 'Dosis', sans-serif;
+  margin-left: 20px;
+}
+
+.container {
+  max-width: 800px;
+}
+
+.logo {
+   width: 60px;
+   margin-right: 10px;
+}
+
+@media(max-width: 768px){
+   .brand-header h3 {
+      font-size: 2rem;
+      margin-left: 10px;
+      line-height: 30px;
+   }
+}

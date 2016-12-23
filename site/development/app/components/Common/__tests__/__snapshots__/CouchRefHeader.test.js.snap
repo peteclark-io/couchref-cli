@@ -1,0 +1,40 @@
+exports[`test Renders ok. 1`] = `
+<div
+  className="brand-header">
+  <div
+    className="container">
+    <div
+      className="row">
+      <div
+        className="col-xs-4">
+        <a
+          onClick={[Function]}
+          style={Object {}}>
+          <h1>
+            CouchRef
+          </h1>
+        </a>
+      </div>
+      <div
+        className="col-xs-8">
+        <a
+          onClick={[Function]}
+          style={Object {}}>
+          <h3
+            className="pull-right">
+            Profile
+          </h3>
+        </a>
+        <a
+          onClick={[Function]}
+          style={Object {}}>
+          <h3
+            className="pull-right">
+            Your Score
+          </h3>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
