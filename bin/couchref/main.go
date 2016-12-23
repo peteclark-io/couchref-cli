@@ -65,6 +65,12 @@ func main() {
 					return err
 				}
 
+				for k, v := range *result {
+					if !v.Televised {
+						delete(*result, k)
+					}
+				}
+
 				d, _ := json.Marshal(result)
 				os.Stdout.Write(d)
 
