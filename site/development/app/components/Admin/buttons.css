@@ -1,0 +1,63 @@
+@import "../../css/branding.css";
+
+.animate {
+	transition: all 0.1s;
+	-webkit-transition: all 0.1s;
+}
+
+.action-button {
+	padding: 0.4rem 1.6rem; /**/
+	border-radius: 0.4rem;
+
+	font-family: var(--font-secondary);
+	color: white;
+
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.red {
+	background-color: var(--brand-danger);
+	border-bottom: 0.2rem solid #BD3E31;
+}
+
+.green {
+	background-color: var(--brand-primary);
+	border-bottom: 0.2rem solid #329B28;
+}
+
+.blue {
+	background-color: var(--brand-tertiary);
+	border-bottom: 0.2rem solid #51A8B5; /*60C6D6 */
+}
+
+.yellow {
+	background-color: rgba(254,205,82,1);
+	border-bottom: 0.2rem solid rgba(253,171,54,1);
+}
+
+.dark-blue {
+	background-color: rgba(60,90,150,1);
+	border-bottom: 0.2rem solid #2F4778;
+}
+
+.yes {
+	background-color: var(--brand-yes);
+	border-bottom: 0.2rem solid #51A8B5; /*60C6D6 */
+}
+
+.no {
+	background-color: var(--brand-no);
+	border-bottom: 0.2rem solid #2F4778;
+}
+
+.action-button:hover {
+	text-decoration: none;
+	color: white;
+}
+
+.action-button:active {
+	-webkit-transform: translate(0px, 0.2rem);
+	transform: translate(0px, 0.2rem);
+	border-bottom: 0.1rem solid;
+}

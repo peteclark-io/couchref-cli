@@ -14,7 +14,7 @@ const rootRoute = (store) => {
             },
             childRoutes: [
                {
-                  path: '/matches',
+                  path: '/m/:matchId',
                   component: require('../pages/sections/MatchPage').default
                }
             ]

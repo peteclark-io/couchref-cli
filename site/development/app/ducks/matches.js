@@ -3,6 +3,7 @@
 import _ from 'lodash';
 import 'whatwg-fetch';
 
+const SCORE_UPDATE = 'couch-ref/matches/SCORE_UPDATE'
 const MATCH_UPDATE = 'couch-ref/matches/MATCH_UPDATE'
 const ADD_MATCH = 'couch-ref/matches/ADD_MATCH'
 
@@ -20,6 +21,9 @@ export default function reducer(state = {}, action){
          [action.match.id]: action.match
       });
 
+      case SCORE_UPDATE:
+      return state;
+
       default:
       return state;
    }
@@ -27,8 +31,23 @@ export default function reducer(state = {}, action){
 
 export function loadMatches() {
    return (dispatch) => {
-      fetch('/matches').then(resp => {
-         console.log(resp.json());
+      fetch('/v1/api/matches').then(resp => {
+         return resp.json();
+      }).then(resp => {
+         resp.map(match => {
+            dispatch(addMatch(match));
+         });
+      });
+   };
+}
+
+export function updateScore(match, homeTeam) {
+   return (dispatch) => {
+      fetch('/v1/api/scored', {method: 'POST', body: {id: match, home_team_scored: homeTeam}})
+      .then(resp => {
+         return resp.json();
+      }).then(resp => {
+         dispatch({type: SCORE_UPDATE});
       });
    };
 }

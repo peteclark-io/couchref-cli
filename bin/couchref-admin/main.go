@@ -7,6 +7,7 @@ import (
 	"strconv"
 	"time"
 
+	rice "github.com/GeertJohan/go.rice"
 	"github.com/Sirupsen/logrus"
 	"github.com/gorilla/mux"
 	"github.com/peteclark-io/couchref-cli/db"
@@ -51,9 +52,16 @@ func main() {
 
 func server(port int, firebase db.DB) {
 	r := mux.NewRouter()
-	r.HandleFunc("/questions", resources.SaveNewQuestion(firebase)).Methods("PUT")
-	r.HandleFunc("/matches", resources.Fixtures(firebase)).Methods("GET")
-	r.HandleFunc("/scored", resources.GoalScored(firebase)).Methods("POST")
+
+	api := r.PathPrefix("/v1/api").Subrouter()
+	api.HandleFunc("/questions", resources.SaveNewQuestion(firebase)).Methods("PUT")
+	api.HandleFunc("/matches", resources.Fixtures(firebase)).Methods("GET")
+	api.HandleFunc("/scored", resources.GoalScored(firebase)).Methods("POST")
+
+	box := rice.MustFindBox("../../site/public")
+	dist := http.StripPrefix("/", http.FileServer(box.HTTPBox()))
+
+	r.PathPrefix("/").Handler(dist)
 
 	addr := "localhost:" + strconv.Itoa(port)
 	server := &http.Server{

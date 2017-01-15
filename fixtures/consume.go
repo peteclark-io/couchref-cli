@@ -2,6 +2,7 @@ package fixtures
 
 import (
 	"encoding/json"
+	"time"
 
 	"github.com/peteclark-io/couchref-cli/structs"
 	uuid "github.com/satori/go.uuid"
@@ -12,10 +13,10 @@ type fixturesResponse struct {
 }
 
 type fixture struct {
-	Date     string `json:"date"`
-	Matchday int    `json:"matchday"`
-	Home     string `json:"homeTeamName"`
-	Away     string `json:"awayTeamName"`
+	Date     time.Time `json:"date"`
+	Matchday int       `json:"matchday"`
+	Home     string    `json:"homeTeamName"`
+	Away     string    `json:"awayTeamName"`
 }
 
 func (f Fixtures) readFixtures() (*[]structs.Fixture, error) {
